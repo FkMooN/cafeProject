@@ -1,0 +1,119 @@
+.log__main
+{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    /* background: url('/assets/coffee2.jpg') top center / cover no-repeat; */
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form__main
+{
+    background-color: #fff;
+    max-width: 430px;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.form{
+padding: 30px;
+}
+.form__main .form .title
+{
+    font-size: 2.7rem;
+    position: relative;
+}
+.form .title::before
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 4px;
+    background-color: #2E0404;
+    border-radius: 25px;
+
+}
+.form .input__field
+{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+}
+.form input
+{
+    width: 100%;
+    height: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    font-size: 1.6rem;
+    transition: all 0.2s ease ;
+}
+.input__field input:is(:focus, :valid)
+{
+border-bottom-color: #2E0404;
+}
+
+.input__field i{
+position: absolute;
+top: 50%;
+transition: all 0.2s ease ;
+transform: translateY(-50%);
+color: #999;
+font-size: 2rem;
+}
+.input__field i:is(:focus, :valid) 
+{
+color: #2E0404;
+}
+.input__field i.icon
+{
+    left: 0;
+}
+.input__field i.show-hide-icon
+{
+    right: 0;
+    cursor: pointer;
+}
+.form .button
+{
+    margin-top: 35px;
+    border: none;
+}
+.form .button input
+{
+    border: none;
+    background-color: #2E0404;
+    color: wheat;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.button input:hover
+{
+    background-color: rgba(46, 4, 2, 0.9);
+}
+.form .login-signup
+{
+    font-size: 1.5rem;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-signup a{
+    text-decoration: none;
+}

@@ -1,0 +1,24 @@
+.web__navbar-item_cate__container
+{
+    list-style-type: none;
+    padding: 20px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 8px;
+
+}
+.web__navbar-item_cate__container div{
+    display: flex;
+    align-items: center;
+}
+.web__navbar-item_cate__container div p{
+   margin: 0;
+   margin-left: 8px;
+}
+.web__navbar-item_cate__container li{
+    padding: 4px;
+}

@@ -1,0 +1,20 @@
+.navbar__sub
+{
+    margin-top: 68px;
+    height: 70.75px;
+    display: flex;
+    align-items: center;
+    background-color: wheat;
+    color: #524850;
+
+}
+.navbar__sub--intro
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav__sub--item
+{
+    padding: 0 10px;
+}

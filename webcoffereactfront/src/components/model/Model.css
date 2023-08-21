@@ -1,0 +1,170 @@
+
+.modal
+{
+    display: flex;
+    position: fixed;
+    top: 0;left: 0;bottom: 0;right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.modal__container
+{
+    background-color: #fff;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+
+    
+}
+.modal__container-address
+{
+   display: flex;
+   flex-direction: column;
+
+   
+}
+.modal__container-address h2{
+    font-size: 2rem;
+    color:#2E0404;
+}
+.modal__container-form
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.modal__container-form_per
+{
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    
+
+}
+.modal__container-form_name
+{
+
+    flex: 0.48;
+    outline:none;
+    height: 40px;
+    padding: 5px;
+
+
+}
+.modal__container-form_phone
+{
+    flex: 0.48;
+
+    outline:none;
+
+    padding: 5px;
+    height: 40px;
+}
+.modal__container-form_add
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 1.5rem;
+}
+.modal__container-form_province
+{
+    width: 100%;
+    outline:none;
+    height: 40px;
+    padding: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.modal__container-form_add-address
+{
+    display: flex;
+    width: 100%;
+    height: 290px;
+
+    position: relative;
+   
+}
+.modal__container-form_add-address_control
+{
+    height: 100%;
+    position: absolute;
+    top: 4px;
+    width: 100%;
+   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    background-color: #fff;
+    border-radius: 3px;
+
+}
+.modal__container-form_add-address_control.disable
+{
+    display: none;
+}
+.modal__container-form_add-address_control select
+{
+    height: 40px;
+    font-size: 1.4rem ;
+}
+.modal__container-form_add-address_control select:focus
+{
+    box-shadow: none;
+}
+
+.modal__container-form_pro-spe
+{
+    width: 100%;
+    outline:none;
+    height: 40px;
+    padding: 5px;
+    margin-top: 10px;
+    position: relative;
+
+}
+.modal__container-form_pro-spe_span{
+    padding: 2px;
+    background-color: #888;
+    position: absolute;
+    top: 16px;
+    right: 72px;
+}
+.modal__container-button
+{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+
+}
+.modal__container-button button
+{
+    width: 120px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+}
+.modal__container-button button:first-child
+{
+    background-color: transparent;
+    color:#2E0404;
+
+}
+.modal__container-button button:nth-child(2)
+{
+    background-color:#524850;
+    color: wheat;
+}
+.modal__container-button button:nth-child(2):hover
+{
+    background-color:rgba(82,72,80,0.8)
+
+}

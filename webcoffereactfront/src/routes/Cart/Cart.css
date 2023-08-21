@@ -1,0 +1,19 @@
+
+.cart__page__btn-cart-check
+{
+    background-color: #524850;
+    color: wheat;
+    font-size: 1.8rem;
+    border-radius: 3px;
+    box-shadow: 0 0 4px #888888
+    ;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+.cart__page__btn-cart-check a{
+    text-decoration: none;
+    color: wheat;
+    font-size: 1.8rem;
+    padding: 10px;
+}
