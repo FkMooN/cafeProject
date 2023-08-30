@@ -18,36 +18,26 @@ function Cart() {
   
     useEffect(()=>{
       getAUser()
-      getAUserPro()
-   
     },[])
   
-    const getAUserPro = async()=>{
-      const result = await axios.get(`http://localhost:8000/api/user/${User._id}`,{ withCredentials: true })
-      if(result.data.status == "success"){
-          result.data.user.wishlist.map((item)=>{
-            getPro(item.proId,item.number)
-          })
-      }
-    }
+ 
     const getAUser = async()=>{
       const result = await axios.get(`http://localhost:8000/api/user/${User._id}`,{ withCredentials: true })
+      console.log("getAUser",result);
+      const products = result.data.user.wishlist
       if(result.data.status == "success"){
-  
           setUser(result.data.user)
+          setPro(products)
       }
     }
-    const getPro = async(id,number)=>{
-      const result = await axios.get(`http://localhost:8000/api/product/${id}`)
-      let product = result.data.product
-      setPro((prev) => [...prev,{...product,number}])
-    }
+
    const handleRemove = async(id)=>{
+    
     const res = await axios.delete(`http://localhost:8000/api/product/del/${id}`)
     if(res.data.status === "success"){
     let result = pro.filter((item)=>
     {
-     return item._id !== id
+     return item.proId._id !== id
     })
     setPro(result)
     }   

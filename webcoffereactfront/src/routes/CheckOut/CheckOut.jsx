@@ -10,71 +10,52 @@ import {  useParams } from 'react-router-dom';
 import axios from 'axios'
 
 function CheckOut(props) {
-  const [proWish,setProWish] = useState([])
+  let [proWish,setProWish] = useState([])
   const [totalPrice,setTotalPrice] = useState(0)
   const [user,setUser] = useState({})
   let User = JSON.parse(localStorage.getItem("User"))
   
-  let  id,number  
+  let idStorage 
   if(JSON.parse(localStorage.getItem("wishItem"))){
-     id = JSON.parse(localStorage.getItem("wishItem")).id
-     number = JSON.parse(localStorage.getItem("wishItem")).quantity
+     idStorage = JSON.parse(localStorage.getItem("wishItem")).proId._id
+     
   }
 
   useEffect(()=>{
-    checkLogin()
-    if(id && number){
-      getPro(id) 
-      getAUser()
+    checkLogin()  
+    if(idStorage){
+      if(proWish.length<=0){
+        proWish.push(JSON.parse(localStorage.getItem("wishItem")))
+      }
+      setProWish(proWish) 
+      setUser(User)
     }
     else{
-      getAUserPro()
       getAUser()
-     
-    }
-  },[])
-  const getAUserPro = async()=>{
-    let sum = 0
-    const result = await axios.get(`http://localhost:8000/api/user/${User._id}`,{ withCredentials: true })
-    if(result.data.status == "success"){
-        result.data.user.wishlist.map(async(item)=>{
-          const  id =item.proId
-          const  number = item.number
-          // getProWish(item.proId,item.quantity)
-          const res = await axios.get(`http://localhost:8000/api/product/${id}`)
-          let product = res.data.product
-          let total =  product.price*number
-          setProWish((prev) => [...prev,{...product,number,total}])
-          sum = sum + total
-          setTotalPrice(sum)
-        })
-    }
-  }
+    } 
+    setUser(User)
+  },[proWish])
+
   const getAUser = async()=>{
     const result = await axios.get(`http://localhost:8000/api/user/${User._id}`,{ withCredentials: true })
-    if(result.data.status == "success"){
-
+    console.log("getAUser",result);
+    const products = result.data.user.wishlist
+    if(result.data.status == "success"){  
         setUser(result.data.user)
+        setProWish(products)
     }
   }
 
-  const getPro = async(id)=>{
-    const result = await axios.get(`http://localhost:8000/api/product/${id}`)
-    if(result){
-      const product = result.data.product
-      setProWish([{...product,number}])
-      setTotalPrice(number * result.data.product.price)
-    }
-  }
+
   const checkLogin = async()=>{
   const result = await axios.get("http://localhost:8000/api/page/checkOut",{ withCredentials: true })
   
   if(result.data.status === "fail"){
     window.location = '/login'
   }
-
-
-    
+  else{
+    window.location = '/'
+  }
   }
 
   const handleLogOut = async()=>{
@@ -103,7 +84,7 @@ function CheckOut(props) {
       SetShowModel(!showModel)
 
     }
-    window.location.reload();
+
   }
     const headline = "Thanh toán"
 
@@ -114,9 +95,11 @@ function CheckOut(props) {
   return (
     <>
           <Navbar user={user} handleLogOut={handleLogOut}/>
-  
+        {
+          console.log(proWish)
+        }
         <Navbar_sub headline={headline}/>
-        {proWish && proWish.length>0 && <Cart_table proWish = {proWish} type = "checkOut"/>}
+        {proWish && <Cart_table proWish = {proWish} type = "checkOut"/>}
         
         <div className="container total__price">
   <div className="check--out__address">
@@ -143,7 +126,10 @@ function CheckOut(props) {
       </tr>
          <tr>
          <td>Tổng Cộng</td>
-         <td>{totalPrice + 20000}</td>  
+         {
+          proWish.totalPrice ?     
+         (<td>{proWish[0].totalPrice + 20000}</td>  ) :<td>20000</td> 
+         }
        </tr>
       
    

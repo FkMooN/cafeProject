@@ -130,7 +130,9 @@ const getAllUser = async(req,res)=>{
 }
 const getUser = async(req,res)=>{
     const {id} = req.params
-    const user = await User.findOne({_id:id}) 
+    const user = await User.findOne({_id:id}).populate(
+        "wishlist.proId"
+    ) 
     try {
         if(user){
             res.json({

@@ -4,9 +4,7 @@ const BillSchema = new mongoose.Schema(
     user:{
         userId :{type:mongoose.Schema.Types.ObjectId,
         ref:"User"},
-        fullName:String,
-        location:String,
-        phone:String
+       
     },
     product:[
         {

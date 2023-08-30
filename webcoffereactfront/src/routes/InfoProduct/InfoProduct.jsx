@@ -89,8 +89,14 @@ function InfoProduct(props) {
   }
 
   const handleCheckout = (id,quantity)=>{
-    if(id && quantity){
-      const testObject = {id,quantity}
+    if(user._id){
+      const testObject = {
+        proId:{
+          ...pro
+        },
+        number:quantity,
+        totalPrice:pro.price*quantity
+      }
       localStorage.setItem("wishItem", JSON.stringify(testObject));
       window.location = `/checkOut`    
     }

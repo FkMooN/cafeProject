@@ -167,17 +167,25 @@ const deleteProduct =  async(req,res)=>{
         const {_id} = req.user
             const user = await User.findById(_id)
             const allReadyAdd = user.wishlist.find((item) => item.proId.toString() === proId)
+                let getPrice = await Product.findById(proId).select("price").exec()
+                let totalPrice = user.wishlist
+                console.log("getPrice",getPrice);
+                console.log("totalPrice",totalPrice);
             if(allReadyAdd){
                 res.json({
-                    message:"Đã có sản phẩm tồn tại trong giỏ hàng",
+                    message:"Đã có sản phẩm tồn tại trong giỏ hàng",    
                     status:"fail"
                 })
             }
             else{
-                let user = await User.updateOne({_id},{
-                    $push: { wishlist: {
-                        proId,number
-                    } }
+                
+                let user = await User.findByIdAndUpdate({_id},{
+                    $push: { 
+                        wishlist: {
+                      proId,
+                     number,
+                    } },
+
                 },{new:true})
                 res.json({
                     message:"Đã thêm sản phẩm vào giỏ hàng",

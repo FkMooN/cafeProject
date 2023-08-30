@@ -21,22 +21,22 @@ function Cart_table(props) {
       <th>Số lượng</th>
       <th>Giá</th>
     </tr>
-    {console.log(proWish)}
+    {console.log(props)}
       { proWish && proWish.map((item)=>{
         return(
             <tr>
                 <td>
               <div className="cart__info">
-                <img src={`data:image/jpeg;base64,${base64ArrayBuffer(item.image.data.data)}`} alt="" />
+                <img src={`data:image/jpeg;base64,${base64ArrayBuffer(item.proId.image.data.data)}`} alt="" />
                 {
                     props.type && props.type ==="checkOut" ?
                     <div className="cart__des">
-                    <p >{item.title}</p>
-                    <span style={{cursor:"default"}}>{item.description}</span>
+                    <p >{item.proId.title}</p>
+                    <span style={{cursor:"default"}}>{item.proId.description}</span>
                   </div> :
                    <div className="cart__des">
-                   <p>{item.title}</p>
-                   <span onClick={()=>handleRemove(item._id)}>Remove</span>
+                   <p>{item.proId.title}</p>
+                   <span onClick={()=>handleRemove(item.proId._id)}>Remove</span>
                   </div>
                 
                 }
@@ -46,7 +46,7 @@ function Cart_table(props) {
             <td>
               <input value={item.number} style={{textAlign:"center"}} disabled/>
             </td>
-            <td className="cart__page--price">{item.price * item.number}</td>
+            <td className="cart__page--price">{item.proId.price}</td>
             </tr> 
        
         )

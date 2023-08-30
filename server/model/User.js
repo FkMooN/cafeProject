@@ -28,16 +28,18 @@ const UserSchema = new mongoose.Schema({
         default: 'user',
         required: false
     },
-    cart:{
-        type:Array,
-        default:[]
-    },
     wishlist:[
         {
             proId :{type:mongoose.Schema.Types.ObjectId,
             ref:"Product"},
             number:Number,
+            price:Number,
+            totalPrice:{
+            type:Number,
+            default:0
+            }   
         }
+        
     ],
     refreshToken :{
         type:String,
