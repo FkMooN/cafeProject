@@ -11,51 +11,47 @@ import axios from 'axios'
 
 function CheckOut(props) {
   let [proWish,setProWish] = useState([])
-  const [totalPrice,setTotalPrice] = useState(0)
+  const [totalPrice,setTotalPrice] = useState()
   const [user,setUser] = useState({})
+  const [suc,setSuc] = useState(true)
   let User = JSON.parse(localStorage.getItem("User"))
-  
-  let idStorage 
-  if(JSON.parse(localStorage.getItem("wishItem"))){
-     idStorage = JSON.parse(localStorage.getItem("wishItem")).proId._id
-     
-  }
 
   useEffect(()=>{
-    checkLogin()  
-    if(idStorage){
-      if(proWish.length<=0){
-        proWish.push(JSON.parse(localStorage.getItem("wishItem")))
-      }
-      setProWish(proWish) 
-      setUser(User)
-    }
-    else{
-      getAUser()
-    } 
-    setUser(User)
-  },[proWish])
+    checkLogin() 
+    getAUser()
+    getCart()
+  },[])
 
   const getAUser = async()=>{
     const result = await axios.get(`http://localhost:8000/api/user/${User._id}`,{ withCredentials: true })
     console.log("getAUser",result);
-    const products = result.data.user.wishlist
     if(result.data.status == "success"){  
         setUser(result.data.user)
-        setProWish(products)
     }
   }
-
+  const getCart = async()=>{
+    const result = await axios.get('http://localhost:8000/api/cart')
+    if (result) {
+      setTotalPrice(result.data.cartList.totalPrice)
+      setProWish(result.data.cartList.products)
+    }
+  }
 
   const checkLogin = async()=>{
   const result = await axios.get("http://localhost:8000/api/page/checkOut",{ withCredentials: true })
   
-  if(result.data.status === "fail"){
-    window.location = '/login'
+  if(result.data.status != "success"){
+    setSuc(!suc)
+    loadPage() 
+
   }
-  else{
-    window.location = '/'
+  else
+  {
+    setSuc(true)
   }
+  }
+  const loadPage = ()=>{
+      window.location = 'login'
   }
 
   const handleLogOut = async()=>{
@@ -127,8 +123,8 @@ function CheckOut(props) {
          <tr>
          <td>Tổng Cộng</td>
          {
-          proWish.totalPrice ?     
-         (<td>{proWish[0].totalPrice + 20000}</td>  ) :<td>20000</td> 
+          totalPrice ?     
+         (<td>{totalPrice + 20000}</td>  ) :<td></td> 
          }
        </tr>
       

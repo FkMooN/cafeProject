@@ -131,7 +131,7 @@ const getAllUser = async(req,res)=>{
 const getUser = async(req,res)=>{
     const {id} = req.params
     const user = await User.findOne({_id:id}).populate(
-        "wishlist.proId"
+        "wishlist.product"
     ) 
     try {
         if(user){

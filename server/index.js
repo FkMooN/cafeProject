@@ -11,7 +11,7 @@ import slugify from "slugify"
 import Product from "./route/Product.js"
 import Page from "./route/Page.js"
 import Bill from './route/Bill.js'
-
+import Cart from "./route/Cart.js"
 const app = express()
 app.use(cors({
     origin:["http://localhost:3000"],
@@ -31,6 +31,7 @@ app.use('/api/user',Auth)
 app.use('/api/product',Product)
 app.use('/api/page',Page)
 app.use('/api/bill',Bill)
+app.use('/api/cart',Cart)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : false}))
 app.listen(PORT, ()=>{console.log(`server is runing at ${PORT}`);})

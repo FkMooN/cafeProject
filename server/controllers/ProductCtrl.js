@@ -162,15 +162,13 @@ const deleteProduct =  async(req,res)=>{
         }
     }
 
-    const addToCart = async(req,res)=>{
-        const {proId ,number} = req.body
+    const addToWishlist = async(req,res)=>{
+        const {product ,number} = req.body
         const {_id} = req.user
             const user = await User.findById(_id)
-            const allReadyAdd = user.wishlist.find((item) => item.proId.toString() === proId)
-                let getPrice = await Product.findById(proId).select("price").exec()
-                let totalPrice = user.wishlist
-                console.log("getPrice",getPrice);
-                console.log("totalPrice",totalPrice);
+            const allReadyAdd = user.wishlist.find((item) => item.product.toString() === product)
+            const getPrice = await Product.findById(product).select("price").exec()  
+            const price = getPrice.price
             if(allReadyAdd){
                 res.json({
                     message:"Đã có sản phẩm tồn tại trong giỏ hàng",    
@@ -182,8 +180,9 @@ const deleteProduct =  async(req,res)=>{
                 let user = await User.findByIdAndUpdate({_id},{
                     $push: { 
                         wishlist: {
-                      proId,
+                      product,
                      number,
+                     price
                     } },
 
                 },{new:true})
@@ -193,13 +192,14 @@ const deleteProduct =  async(req,res)=>{
                     user:user
                 })
             }
-  
     }
-    const removeToCart = async(req,res)=>{
-        const {proId} = req.params
+    const removeToWishlist = async(req,res)=>{
+        const {product} = req.params
         const {_id} = req.user
+        
             const user = await User.findById(_id)
-            const allReady = user.wishlist.find((item) => item.proId.toString() === proId)
+            const allReady = user.wishlist.find((item) => item.product.toString() === product)
+            
             if(!allReady){
                 res.json({  
                     message:"Không tồn tại sản phẩm",
@@ -209,7 +209,7 @@ const deleteProduct =  async(req,res)=>{
             else{
                 let user = await User.updateOne({_id},{
                     $pull: { wishlist: {
-                        proId
+                        product
                     } }
                 },{new:true})
                 res.json({
@@ -220,4 +220,5 @@ const deleteProduct =  async(req,res)=>{
             }
 
     }
-export default {getAllProduct,getAProduct,createProduct,updateProduct,deleteProduct,getCate,searchProduct,addToCart,removeToCart}
+    
+export default {getAllProduct,getAProduct,createProduct,updateProduct,deleteProduct,getCate,searchProduct,addToWishlist,removeToWishlist}

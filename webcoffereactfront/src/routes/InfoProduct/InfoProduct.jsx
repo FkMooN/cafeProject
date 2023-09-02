@@ -66,7 +66,7 @@ function InfoProduct(props) {
   };
   const handleAddCart = async(id,quantity)=>{
       const result = await axios.post(`http://localhost:8000/api/product/add/`,
-      {proId:id,
+      {product:id,
       number:quantity
     },
       {withCredentials: true,
@@ -88,17 +88,23 @@ function InfoProduct(props) {
     
   }
 
-  const handleCheckout = (id,quantity)=>{
+  const handleCheckout = async(id,quantity)=>{
     if(user._id){
-      const testObject = {
-        proId:{
-          ...pro
-        },
-        number:quantity,
-        totalPrice:pro.price*quantity
+      const cart = [
+        {
+          _id:pro._id,
+          number:quantity
+        }
+        
+      ]
+      const result =  await axios.post('http://localhost:8000/api/cart',
+      {
+        cart
+      },
+      { withCredentials: true })
+      if (result) {
+        window.location = `/checkOut`    
       }
-      localStorage.setItem("wishItem", JSON.stringify(testObject));
-      window.location = `/checkOut`    
     }
     else{
        window.location = '/login'

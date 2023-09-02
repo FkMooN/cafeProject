@@ -13,6 +13,7 @@ function Product() {
   const [cate,setCate]= useState([])
   const [user,setUser] = useState({})
   let User = JSON.parse(localStorage.getItem("User"))
+
   useEffect(()=>{
       getAllPro()
       getCate()
@@ -23,6 +24,7 @@ function Product() {
   }
   const getAUser = async()=>{
     const result = await axios.get(`http://localhost:8000/api/user/${User._id}`,{ withCredentials: true })
+    console.log(result);
     if(result.data.status == "success"){
 
         setUser(result.data.user)

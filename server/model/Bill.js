@@ -3,22 +3,29 @@ const BillSchema = new mongoose.Schema(
 {
     user:{
         userId :{type:mongoose.Schema.Types.ObjectId,
-        ref:"User"},
-       
+        ref:"User"},  
     },
-    product:[
+    products:[
         {
-        proId :{type:mongoose.Schema.Types.ObjectId,
+        product :{type:mongoose.Schema.Types.ObjectId,
         ref:"Product"},
         price:Number,
         number:Number,
-        total:Number
         }
     ],
     totalPrice:Number,
-    billCode:Number,
-    billDes:String
-
+    billDes:{
+        type:String,
+        default: "Đang đợi xác nhận",
+        enum: [
+        "Đang đợi xác nhận",    
+        "Đơn đã duyệt",
+        "Đơn đã hủy",
+        "Đang giao",
+        "Đã giao",
+        "Giao thất bại"    
+        ]
+    }
 },
 {timestamps:true}
 )
