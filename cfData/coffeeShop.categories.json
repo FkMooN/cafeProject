@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "64d293882bbee760446807df"
+  },
+  "cateName": "Cà phê rang xay"
+},
+{
+  "_id": {
+    "$oid": "64d293f02bbee760446807e1"
+  },
+  "cateName": "Cà phê hòa tan"
+},
+{
+  "_id": {
+    "$oid": "64d293f02bbee760446807e2"
+  },
+  "cateName": "Cà phê hạt"
+}]

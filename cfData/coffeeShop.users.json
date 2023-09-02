@@ -1,0 +1,87 @@
+[{
+  "_id": {
+    "$oid": "64d2121ca1f05536325a9eed"
+  },
+  "userName": "Cao Mon",
+  "email": "monmon@gmail.com",
+  "password": "$2b$10$prWEoZ5hHv2XNnJeVi0QM.tvvjxgm6bNMDs.zDnXiMTvS3xhDlZBO",
+  "role": "user",
+  "cart": [],
+  "wishlist": [],
+  "createdAt": {
+    "$date": "2023-08-08T09:59:56.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-08T09:59:56.620Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64d214c7177ad3d185aa9d8d"
+  },
+  "userName": "quizquiz",
+  "email": "quizquiz@gmail.com",
+  "password": "$2b$10$7PGdhNV5Xea0vS49/tpdg.tLDbk.vIoSNitGIKSnnIcbnwJ9Be9GK",
+  "role": "admin",
+  "cart": [],
+  "createdAt": {
+    "$date": "2023-08-08T10:11:19.470Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-29T13:52:48.891Z"
+  },
+  "__v": 0,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDIxNGM3MTc3YWQzZDE4NWFhOWQ4ZCIsImlhdCI6MTY5MzMxNzE2OCwiZXhwIjoxNjkzNTc2MzY4fQ.nMyaBI8Tpy68602gxu8xTvjgKWjv3xPuG146j0euLJs",
+  "location": "289,tổ 14,Tỉnh Lào Cai,Huyện Bảo Thắng,Xã Bản Phiệt",
+  "phone": "0123456",
+  "fullName": "Cao Tiến Đạt G",
+  "wishlist": [
+    {
+      "proId": {
+        "$oid": "64d09bc88cacad26040dd46a"
+      },
+      "number": 1,
+      "totalPrice": 0,
+      "_id": {
+        "$oid": "64ec266acdf25eb1716491e5"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d23c4c971c28b1c339bda4"
+  },
+  "userName": "Cao Moonn",
+  "email": "mooncao@gmail.com",
+  "password": "$2b$10$PKDoxLiTsWgbtGThi5v3a.BYoqh6RUWazzZ7OyOZRizcfk0H9mVdS",
+  "role": "user",
+  "cart": [],
+  "wishlist": [],
+  "createdAt": {
+    "$date": "2023-08-08T12:59:56.179Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-08T12:59:56.179Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64d23dc5ce02133e81635fac"
+  },
+  "userName": "Cao Moonn",
+  "email": "mooncao1@gmail.com",
+  "password": "$2b$10$in/gC6dNU4Qze3cTrR/VpeifkytGIX3t5d/dJ4Sbs.8vfYE1L1Kwa",
+  "role": "user",
+  "cart": [],
+  "wishlist": [],
+  "createdAt": {
+    "$date": "2023-08-08T13:06:13.108Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-08T13:06:13.108Z"
+  },
+  "__v": 0
+}]
